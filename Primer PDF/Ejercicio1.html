@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Ejercicio 1</title>
+    <script>
+    
+        var array = [];
+
+        var tamaño = prompt("Indica el tamaño del array");
+
+        for (let index = 0; index < tamaño; index++) {
+            
+            array.push(prompt("Dime el numero"));
+            
+        }
+
+        var numMax = 0;
+
+        for (let index = 0; index < tamaño; index++) {
+            
+            if (array[index] > numMax) {
+                numMax = parseInt(array[index]);
+            }
+            
+        }
+
+        document.write("El numero mas alto es: " + numMax);
+
+    </script>
+
+</head>
+
+<body>
+      
+
+</body>
+
+</html>
