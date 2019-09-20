@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Ejercicio 3</title>
+
+<script>
+
+//FUNCION PARA COMPROBAR SI EL DNI ES CORRECTO O NO
+
+function dniValido(dni){ // Retorna: true | false
+if (/^\d{8}[a-zA-Z]$/.test(dni)) {
+var n = dni.substr(0,8);
+var c = dni.substr(8,1);
+return (c.toUpperCase() == "TRWAGMYFPDXBNJZSQVHLCKET".charAt(n%23)); // DNI correcto ?
+}
+return false; // DNI incorrecto
+}
+
+
+//FUNCION PARA COMPROBAR SI EL CORREO ES CORRECTO O NO
+
+function isValidEmail(correo) { 
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(correo); 
+}
+
+//FUNCION PARA COMPROBAR SI LA IP ES CORRECTA O NO
+function validarIP(IP) 
+{
+ if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(IP)) {
+    return (true)
+  }
+return (false)
+}
+
+
+//------------------------DNI-------------------------------
+var dni = prompt("Dime tu DNI");
+var comprobarDNI = dniValido(dni);
+
+    
+if (comprobarDNI == false) {
+    document.write("El DNI "+dni +" es incorrecto")
+    document.write("<br>")
+}else{
+    document.write("El DNI "+dni +" es correcto")
+    document.write("<br>")
+}
+//------------------------CORREO-------------------------------
+var correo = prompt("Introduce tu correo electronico");
+var comprobarCorreo = isValidEmail(correo);
+
+if (comprobarCorreo == true) {
+    document.write("El correo "+correo +" es correcto")
+    document.write("<br>")
+}else{
+    document.write("El correo "+correo +" es incorrecto")
+    document.write("<br>")
+}
+
+
+//------------------------document.write("Telefono incorrecto")TELEFONO-------------------------------
+
+var telefono = prompt("Introduce un telefono")
+
+
+
+if (/^[1-9]{9}$/.test(telefono)== true){
+document.write("Telfono correcto")
+document.write("<br>")
+
+} else {
+    document.write("Telfono incorrecto")
+    document.write("<br>")
+
+}
+
+//------------------------IP-------------------------------
+var IP = prompt("Introduce una IP válida")
+
+if (validarIP(IP) == true) {
+    document.write("La IP es correcta")
+    document.write("<br>")
+
+}else{
+    document.write("La IP es incorrecta")
+    document.write("<br>")
+
+}
+
+
+
+</script>
+
+</head>
+
+<body>
+    
+</body>
+
+</html>
