@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+   <style>
+   #boton{
+             text-align: center     
+   }
+
+   #uno{
+    border: 1px solid black;   
+    float: left;
+     width: 50%;
+     height: 500px;
+     
+   }
+
+   #dos{
+
+    border: 1px solid black;   
+    float: right;
+    width: 50%;
+    height: 500px;
+
+   }
+   
+
+
+   </style>
+
+   <script>
+   function crearParrafo(){
+    var div = document.getElementById("boton");
+    var parrafo = document.createElement("p");
+    var text = document.createTextNode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat");
+
+    parrafo.appendChild(text);
+    div.appendChild(parrafo);
+
+   }
+   
+
+   </script>
+
+
+</head>
+<body>
+    
+<div id="uno">
+
+<p>lalalala</p>
+
+</div>
+
+<div id="dos">
+
+    
+</div>
+
+<br> 
+<div id="boton">
+
+<button onclick="crearParrafo()"> Crear Parrafo </button>
+
+</div>
+
+
+</body>
+</html>

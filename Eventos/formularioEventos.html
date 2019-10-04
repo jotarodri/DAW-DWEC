@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Formulario</title>
+    
+    <script>
+
+        var arrayComprobador = [];
+
+    function comprobarNombre(nombre){
+
+        var comprobador = /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(nombre.value);
+
+            if (comprobador == true) {
+                arrayComprobador[0]=true;
+            }else{
+                arrayComprobador[0]=false;
+                nombre.value = "Error";
+            }
+            
+    }
+
+     function comprobarApellido(apellido){
+
+        var comprobador = /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(apellido.value);
+
+            if (comprobador == true) {
+                arrayComprobador[1]=true;
+            }else{
+                arrayComprobador[1]=false;
+                apellido.value = "Error";
+            }
+            
+        }
+
+        function comprobarCorreo(correo){
+
+            var comprobador = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(correo.value);
+
+            if (comprobador == true) {
+                arrayComprobador[2]=true;
+            }else{
+                arrayComprobador[2]=false;
+                correo.value = "Error";
+            }
+
+        }
+
+
+    function comprobarDNI(dni){
+
+    var comprobador = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i.test(dni.value);
+
+        if (comprobador == true) {
+           
+            arrayComprobador[3]=true;
+
+        }else{
+
+        arrayComprobador[3]=false;
+        dni.value = "Error";
+
+        }
+        }
+
+        function comprobarContraseña(contraseña){
+
+        var comprobador = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/.test(contraseña.value);
+
+        if (comprobador == true) {
+
+        arrayComprobador[4]=true;
+
+        }else{
+
+        arrayComprobador[4]=false;
+
+    }
+    }
+
+    function comprobarContraseñaRepetida(recontraseña,contraseña){
+
+        if (recontraseña== contraseña) {
+            arrayComprobador[5]=true;
+        } else {
+            arrayComprobador[5]=false;
+            
+        }
+
+}
+
+    function comprobarIP(IP){
+
+    var comprobador = /^([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})$/.test(IP.value);
+
+    if (comprobador == true) {
+
+    arrayComprobador[6]=true;
+
+    }else{
+
+    arrayComprobador[6]=false;
+    IP.value = "Error";
+
+    }
+
+    }
+
+
+    function validar(contraseña, repassword){
+
+        var aux = true;
+
+        
+        for (let index = 0; index < arrayComprobador.length; index++) {
+            
+            if (arrayComprobador[index] == false) {
+               aux = false;              
+            } else {
+                aux = true;
+            }
+        
+        }Error
+
+        if (aux == false) {
+            alert("Has escrito un campo incorrectamente")
+        } else if (arrayComprobador.length == 0) {
+            alert("Debes rellenar todos los campos");
+        }else if(contraseña != repassword || repassword != contraseña){
+
+        alert("Las contraseñas no coinciden. Recuerda que deben tener una minúscula, una mayúscula, un símbolo y un número. Tamaño mínimo 8 cáracteres");    
+
+        } else {
+            alert("Formulario correcto!")
+
+        }
+
+        
+
+    }
+    
+        
+    </script>
+    
+    <style> @import url("formulariocss.css"); </style>
+
+    
+
+</head>
+<body>
+   <div class="formulario">
+    <h1>Formulario Total</h1>
+ 
+<form action="">
+
+<label>Nombre</label>
+<input type="text" name="nombre" size="80" onblur="comprobarNombre(this)"> <br>
+
+<label>Apellidos:</label>
+<input type="text" name="apellidos" size="80" onblur="comprobarApellido(this)"> <br>
+     
+     
+<label>E-mail</label>
+<input type="text" name="email" size="80" onblur="comprobarCorreo(this)"> <br>
+
+<label>DNI:</label>
+<input type="text" name="dni" size="80" onblur="comprobarDNI(this)"> <br>
+
+<label>Password:</label>
+<input type="password" name="contraseña" size="80" onblur="comprobarContraseña(this)"> <br>
+
+
+<label>Repetir password:</label>
+<input type="password" name="repassword"  size="80" onblur="comprobarContraseñaRepetida(this,contraseña.value)"> <br>
+
+
+<label>IP Equipo:</label>
+<input type="text" name="ip" size="80" onblur="comprobarIP(this)"> <br>
+
+
+<button onclick="validar(contraseña.value,repassword.value)">Enviar</button>
+
+
+</form>
+
+</div>
+</body>
+</html>
