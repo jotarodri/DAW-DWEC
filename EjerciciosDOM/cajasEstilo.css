@@ -12,6 +12,7 @@ div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
 }
 
 button {
@@ -19,33 +20,35 @@ button {
 }
 
 #rojo {
-    width: 300px;
+    width: 100%;
     height: 300px;
     background-color: red;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 7px 7px 7px black;
 }
 
 #contenedorAzul {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
 }
 
 #azul {
-    width: 300px;
+    width: 100%;
     height: 300px;
     background-color: blue;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 7px 7px 7px black;
 }
 
 #contenedorVerde {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
 }
 
 #verde {
-    width: 300px;
+    width: 100%;
     height: 300px;
     background-color: green;
     box-shadow: 7px 7px 7px black;
@@ -55,11 +58,17 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
 }
 
 #negro {
-    width: 300px;
+    width: 100%;
     height: 300px;
     background-color: black;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 7px 7px 7px black;
+}
+
+.prueba {
+    width: 0px !important;
+    transition: width 3s;
 }
