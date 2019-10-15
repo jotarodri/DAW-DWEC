@@ -5,7 +5,7 @@ var numCalculado; //Será el resultado que se actualizará cuando hayan 2 nums;
 var signo;
 var operacion;
 var pantalla = document.getElementById("pantalla");
-
+var event;
 var num1;
 var num2;
 
@@ -81,21 +81,6 @@ function insertarNumero(boton) {
         hayNum = false;
     }
 
-    /*if (numero == "C") {
-        resetear();
-    }
-
-    if (numero == "«") {
-        retroceder();
-    }
-
-    if (numero == "«") {
-        retroceder();
-    }*/
-
-
-
-
     if (numero != "." && numero != "+" && numero != "-" && numero != "/" && numero != "x" && numero != "%" && numero != "C" && numero != "«") {
 
         operacion = document.getElementById("pantalla").value;
@@ -167,13 +152,13 @@ function resetear() {
 function retroceder() {
 
     document.getElementById("pantalla").value = document.getElementById("pantalla").value.slice(document.getElementById("pantalla").length, -1);
+
     if (document.getElementById("pantalla").value.length <= 0) {
         document.getElementById("pantalla").value = "0";
     }
 }
 
 function porcentaje(operacion, signo) {
-
 
     var num1 = operacion.split(["%"], 1);
     var aux = operacion.split(["%"], operacion.length);
