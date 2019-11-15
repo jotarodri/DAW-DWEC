@@ -1,0 +1,13 @@
+h1{
+    margin-left: 30%;
+}
+video{
+    width: 1000px;
+    height: 500px;
+    margin-left: 10%;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: 1100px 500px;
+}
