@@ -1,13 +1,69 @@
 h1{
-    margin-left: 30%;
+    margin-left: 20%;
 }
-video{
-    width: 1000px;
-    height: 500px;
-    margin-left: 10%;
-}
+
 
 #container{
     display: grid;
     grid-template-columns: 1100px 500px;
+    grid-template-rows: 800px;
+}
+
+#containerVideos{
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 200px);
+    
+}
+
+#sonicVideo{
+    display: grid;
+    grid-template-rows: 525px 100px;
+}
+
+#containerBotones{
+
+margin-left: 10%;
+
+}
+
+.miniVideo{
+width: 400px;
+height: 200px;
+border: 1px solid black;
+
+}
+
+.boton{
+    height: 100px;
+    width: 100px;
+    margin: 1%;
+    
+}
+
+.silenciar{
+background-color: ;
+}
+
+.retroceder{
+    background-color: ;
+   
+}
+.play{
+    background-color: ;
+}
+.avanzar{
+    background-color: ;   
+}
+.reiniciar{
+    background-color: ;  
+}
+
+.bajarvol{
+  background-color: ; 
+}
+
+.subirvol{
+background-color: ;   
 }
