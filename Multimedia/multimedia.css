@@ -32,6 +32,7 @@ margin-left: 10%;
 width: 400px;
 height: 200px;
 border: 1px solid black;
+object-fit: cover;
 
 }
 
@@ -39,31 +40,38 @@ border: 1px solid black;
     height: 100px;
     width: 100px;
     margin: 1%;
+   border-radius: 10px;
     
 }
 
 .silenciar{
-background-color: ;
+    background-image: url("imgs/muted.png");
+    background-size: 100% 100%;
 }
 
 .retroceder{
-    background-color: ;
-   
+    background-image: url("imgs/rewind.png");
+    background-size: 100% 100%;
 }
 .play{
-    background-color: ;
+    background-image: url("imgs/play.png");
+    background-size: 100% 100%;
 }
 .avanzar{
-    background-color: ;   
+    background-image: url("imgs/forward.jpeg");
+    background-size: 100% 100%;
 }
 .reiniciar{
-    background-color: ;  
+    background-image: url("imgs/reload.svg");
+    background-size: 100% 100%;
 }
 
 .bajarvol{
-  background-color: ; 
+    background-image: url("imgs/sounddown.png");
+    background-size: 100% 100%;
 }
 
 .subirvol{
-background-color: ;   
+    background-image: url("imgs/soundup.png");
+    background-size: 100% 100%;
 }
