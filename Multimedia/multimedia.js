@@ -3,6 +3,7 @@ var silenciado = false;
 
 window.onload = function() {
         
+let arrayVideos = document.getElementsByClassName(".miniVideo");
 
 document.querySelector(".play").addEventListener("click",ejecutarVideo);
 document.querySelector(".silenciar").addEventListener("click",silenciarVideo);
@@ -11,6 +12,12 @@ document.querySelector(".avanzar").addEventListener("click",avanzarVideo);
 document.querySelector(".reiniciar").addEventListener("click",reiniciarVideo);
 document.querySelector(".bajarvol").addEventListener("click",bajarVolumen);
 document.querySelector(".subirvol").addEventListener("click",subirVolumen);
+//document.querySelector(".miniVideo").addEventListener("click",ejemplo);
+
+    arrayVideos.forEach(element => {
+    element.addEventListener("click",ejemplo);
+});
+
 
 }
 
@@ -78,3 +85,24 @@ function subirVolumen() {
 }
 
 
+function ejemplo() {
+    
+let videoActivo = document.querySelector("#videoMain");
+switch (this.id) {
+    case "avengers":
+            console.log("HOla avengers");
+       // videoActivo.id = "avengersActivo";
+        videoActivo.src = "videos/avengers.mp4";
+        videoActivo.play();
+        
+       break;   
+    case "falangista":
+        console.log("HOla falangista");
+            videoActivo.id = "falangistaActivo";
+            videoActivo.src = "videos/falangista.mp4";
+            videoActivo.play();
+                
+    break;
+}
+
+}

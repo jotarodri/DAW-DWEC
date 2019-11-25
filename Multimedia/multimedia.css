@@ -9,17 +9,25 @@ h1{
     grid-template-rows: 800px;
 }
 
+
 #containerVideos{
     
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 200px);
+    grid-gap: 15px;
+
     
 }
 
-#sonicVideo{
+
+
+#videoActivo{
     display: grid;
     grid-template-rows: 525px 100px;
+    height: 500px;
+    width: 1100px;
+    margin-top: 2%;
 }
 
 #containerBotones{
@@ -29,11 +37,20 @@ margin-left: 10%;
 }
 
 .miniVideo{
-width: 400px;
-height: 200px;
+    width: 400px;
+    height: 200px;
 border: 1px solid black;
-object-fit: cover;
 
+}
+
+#avengers{
+    background-image: url("miniaturas/avengers.jpg");
+    background-size: 100% 100%;
+}
+
+#falangista{
+    background-image: url("miniaturas/falangista.jpeg");
+    background-size: 100% 100%;
 }
 
 .boton{
