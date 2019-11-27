@@ -3,7 +3,7 @@ var silenciado = false;
 
 window.onload = function() {
         
-let arrayVideos = document.getElementsByClassName(".miniVideo");
+let arrayVideos = document.querySelectorAll("video");
 
 document.querySelector(".play").addEventListener("click",ejecutarVideo);
 document.querySelector(".silenciar").addEventListener("click",silenciarVideo);
@@ -15,8 +15,8 @@ document.querySelector(".subirvol").addEventListener("click",subirVolumen);
 //document.querySelector(".miniVideo").addEventListener("click",ejemplo);
 
     arrayVideos.forEach(element => {
-    element.addEventListener("click",ejemplo);
-});
+        element.addEventListener("click",cambiarVideo);
+    });
 
 
 }
@@ -85,24 +85,36 @@ function subirVolumen() {
 }
 
 
-function ejemplo() {
+function cambiarVideo() {
+   
+    let videoActivo = document.querySelector("#videoMain");
+    let videoActivosrc = videoActivo.src;
+    let videoClickado =this.src;
+    console.log(videoActivosrc);
     
-let videoActivo = document.querySelector("#videoMain");
-switch (this.id) {
-    case "avengers":
-            console.log("HOla avengers");
-       // videoActivo.id = "avengersActivo";
-        videoActivo.src = "videos/avengers.mp4";
-        videoActivo.play();
+    videoActivo.src = videoClickado;
+    this.src = videoActivosrc;
+
+    
+    switch (videoActivosrc) {
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/sonic.mp4":     this.poster = "miniaturas/sonic.jpg";      break;
         
-       break;   
-    case "falangista":
-        console.log("HOla falangista");
-            videoActivo.id = "falangistaActivo";
-            videoActivo.src = "videos/falangista.mp4";
-            videoActivo.play();
-                
-    break;
-}
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/avengers.mp4":      this.poster = "miniaturas/avengers.jpg";      break;
+            
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/wow.mp4":     this.poster = "miniaturas/wow.jpg";       break;
+        
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/goles.mp4":     this.poster = "miniaturas/goles.jpeg";       break;
+
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/thor.mp4":     this.poster = "miniaturas/thor.jpeg";       break;
+
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/falangista.mp4":     this.poster = "miniaturas/falangista.jpeg";       break;
+
+
+    }
+
+
+    videoActivo.load();
+    videoActivo.play();
+ 
 
 }

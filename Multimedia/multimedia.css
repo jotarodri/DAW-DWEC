@@ -1,5 +1,11 @@
+body{
+    background-image: url("fondo.png");
+    background-size: 100% 100%;
+}
+
 h1{
     margin-left: 20%;
+    color: blanchedalmond;
 }
 
 
@@ -39,19 +45,8 @@ margin-left: 10%;
 .miniVideo{
     width: 400px;
     height: 200px;
-border: 1px solid black;
-
 }
 
-#avengers{
-    background-image: url("miniaturas/avengers.jpg");
-    background-size: 100% 100%;
-}
-
-#falangista{
-    background-image: url("miniaturas/falangista.jpeg");
-    background-size: 100% 100%;
-}
 
 .boton{
     height: 100px;
@@ -92,3 +87,4 @@ border: 1px solid black;
     background-image: url("imgs/soundup.png");
     background-size: 100% 100%;
 }
+
