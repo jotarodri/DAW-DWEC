@@ -1,9 +1,14 @@
 var pausado = false;
 var silenciado = false;
 
+let countDown;
+
 window.onload = function() {
         
-let arrayVideos = document.querySelectorAll("video");
+    ponerAnuncio();
+    countDown = 10; //segundo
+
+let arrayVideos = document.querySelectorAll("#minivideo");
 
 document.querySelector(".play").addEventListener("click",ejecutarVideo);
 document.querySelector(".silenciar").addEventListener("click",silenciarVideo);
@@ -12,12 +17,13 @@ document.querySelector(".avanzar").addEventListener("click",avanzarVideo);
 document.querySelector(".reiniciar").addEventListener("click",reiniciarVideo);
 document.querySelector(".bajarvol").addEventListener("click",bajarVolumen);
 document.querySelector(".subirvol").addEventListener("click",subirVolumen);
-//document.querySelector(".miniVideo").addEventListener("click",ejemplo);
+
+setInterval(cuentaAtras, 1000);
+
 
     arrayVideos.forEach(element => {
         element.addEventListener("click",cambiarVideo);
     });
-
 
 }
 
@@ -97,18 +103,16 @@ function cambiarVideo() {
 
     
     switch (videoActivosrc) {
+        
         case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/sonic.mp4":     this.poster = "miniaturas/sonic.jpg";      break;
         
-        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/avengers.mp4":      this.poster = "miniaturas/avengers.jpg";      break;
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/luffy.mp4":      this.poster = "miniaturas/luffy.jpeg";      break;
             
         case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/wow.mp4":     this.poster = "miniaturas/wow.jpg";       break;
         
-        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/goles.mp4":     this.poster = "miniaturas/goles.jpeg";       break;
+        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/avengers.mp4":     this.poster = "miniaturas/avengers.jpeg";       break;
 
         case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/thor.mp4":     this.poster = "miniaturas/thor.jpeg";       break;
-
-        case "file:///home/daw/GitHub/DAW-DWEC/Multimedia/videos/falangista.mp4":     this.poster = "miniaturas/falangista.jpeg";       break;
-
 
     }
 
@@ -118,3 +122,33 @@ function cambiarVideo() {
  
 
 }
+
+
+async function ponerAnuncio() {
+    let divVideo = document.getElementById("videoActivo");
+    let anuncio = document.createElement("div");
+    anuncio.classList.add("anuncio");
+    divVideo.appendChild(anuncio);
+
+   
+}
+
+function cuentaAtras() {
+    
+let anuncio = document.getElementsByClassName("anuncio")[0];
+anuncio.innerText = countDown;
+    if (countDown != 0) {
+        countDown--;
+
+        anuncio.innerText = countDown;
+
+    } else {
+        let padre = document.getElementsByClassName("anuncio")[0].parentNode;
+
+        padre.removeChild(document.getElementsByClassName("anuncio")[0]);
+
+        
+    }
+
+}
+
