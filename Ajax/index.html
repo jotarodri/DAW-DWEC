@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+</head>
+<body>
+    <button id="botonaco">Botonaco</button>
+</body>
+
+<script>
+    
+    function descargar() {
+        let peticion_http = new XMLHttpRequest();
+    
+        peticion_http.onreadystatechange = mostrar;
+    
+        peticion_http.open("GET","http://localhost:8080/DAW-DWEC/Ajax/holamundo.txt",true);
+        peticion_http.send(null);
+    
+        function mostrar() {
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+        
+                alert(document.getElementById("nombre") + ""+ peticion_http.responseText);
+        
+            }
+        }
+    }
+    
+    let boton = document.getElementById("botonaco");
+    
+        boton.addEventListener("click", descargar);
+    
+    
+    </script>
+</html>
