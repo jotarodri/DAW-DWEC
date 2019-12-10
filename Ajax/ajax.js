@@ -1,4 +1,7 @@
+
+
 function descargar(metodo, ruta, envio, xml, funcion) {
+
     // Obtener la instancia del objeto XMLHttpRequest
     let peticion_http = new XMLHttpRequest();
     // Preparar la función de respuesta
