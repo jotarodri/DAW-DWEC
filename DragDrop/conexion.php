@@ -1,8 +1,8 @@
 <?php
   
   $servidor = "localhost";
-  $username = "root";
-  $password = "";
+  $username = "user";
+  $password = "user";
   $basedatos = "equipo";
 
   # Crear conexión

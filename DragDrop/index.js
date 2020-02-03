@@ -1,3 +1,4 @@
+
 let equipo;
 var jugadores;
 
@@ -20,13 +21,17 @@ function ponerImagen(jugadores) {
        
 
         let jugador = document.createElement("div");
-        jugador.addEventListener('dragover', allowDrop);
+       /* jugador.addEventListener('dragover', allowDrop);
         jugador.addEventListener('drop', drop);
+        jugador.dataset.img = "yes";*/
+        
 
         if (posicion == "porteria") {
             if (jugadores[i].posicion == "Portero") {
                 let portero = document.getElementById("portero");
-                jugador.setAttribute("id","portero")
+                jugador.setAttribute("id","portero");
+                portero.addEventListener('dragover', allowDrop);
+                portero.addEventListener('drop', drop);
                 let imagenPortero = document.createElement("img");
                 imagenPortero.addEventListener('dragstart', drag);
                 imagenPortero.setAttribute('id', jugadores[i]._idjugador);
@@ -40,7 +45,9 @@ function ponerImagen(jugadores) {
         if (posicion == "defensa") {
             if (jugadores[i].posicion == "Defensa") {
                 let defensas = document.getElementById("defensas");
-                defensas.setAttribute("id","defensas")
+                defensas.setAttribute("id","defensas");
+                defensas.addEventListener('dragover', allowDrop);
+                defensas.addEventListener('drop', drop);
                 jugador.setAttribute("id","defensa"+i)
                 let imagenDefensa = document.createElement("img");
                 imagenDefensa.addEventListener('dragstart', drag);
@@ -56,7 +63,9 @@ function ponerImagen(jugadores) {
         if (posicion == "medio") {
             if (jugadores[i].posicion == "Centrocampista") {
                 let medios = document.getElementById("medios");
-                medios.setAttribute("id","medios")
+                medios.setAttribute("id","medios");
+                medios.addEventListener('dragover', allowDrop);
+                medios.addEventListener('drop', drop);
                 jugador.setAttribute("id","medio"+i)
                 let imagenMedio = document.createElement("img");
                 imagenMedio.addEventListener('dragstart', drag);
@@ -72,7 +81,9 @@ function ponerImagen(jugadores) {
         if (posicion == "delantera") {
             if (jugadores[i].posicion == "Delantero") {
                 let delanteros = document.getElementById("delanteros");
-                delanteros.setAttribute("id","delanteros")
+                delanteros.setAttribute("id","delanteros");
+                delanteros.addEventListener('dragover', allowDrop);
+                delanteros.addEventListener('drop', drop);
                 jugador.setAttribute("id","delantero"+i)
                 let imagenDelantero = document.createElement("img");
                 imagenDelantero.addEventListener('dragstart', drag);
@@ -114,7 +125,10 @@ function ponerImagen(jugadores) {
 function allowDrop(ev) {
 
     //Permitir que reciba algún elemento
-    ev.preventDefault();
+   
+        ev.preventDefault();
+    
+    
     
     }
     
@@ -126,7 +140,7 @@ function allowDrop(ev) {
     }
     
     function drop(ev) {
-    
+  console.log(ev.target.firstChild);
     //Evitamos el comportamiento normal del navegador, que sería abrir el elemento en una nueva pestaña.
     ev.preventDefault();
     
@@ -134,8 +148,11 @@ function allowDrop(ev) {
     var data = ev.dataTransfer.getData("text");
     
     //Colgamos el elemeto arrastrado y soltado en el nuevo destino.
-    ev.target.appendChild(document.getElementById(data));
+        
+        ev.target.appendChild(document.getElementById(data));
     
+    
+ 
     }
 
 

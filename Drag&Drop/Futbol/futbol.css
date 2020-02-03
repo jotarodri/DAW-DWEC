@@ -1,0 +1,8 @@
+#campo{
+    width: 1000px;
+    height: 650px;
+    float: right;
+    background-image: url("imgs/fondo.jpg");
+    background-size: 100% 100%;
+
+}
