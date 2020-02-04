@@ -24,12 +24,14 @@ div {
 }
 .foto {
 	width:150px;
-	height:200px;
+    height:200px;
+    
 }
 img {
 	width:150px;
 	height:200px;
-        box-shadow:2px 2px 2px silver;
+    box-shadow:2px 2px 2px silver;
+    float:left;
 }
 .cabecera {
 	background-color:silver;
@@ -97,6 +99,15 @@ img {
     float:none;
     margin-bottom:15px;
 }
+
+.contenedor{
+
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    margin-left: 5%;
+    text-align: center;
+}
 .error {
     border:1px solid red;
     float:left;
@@ -104,6 +115,23 @@ img {
     padding-right:10px;
     color:red;
     visibility:hidden;
+}
+
+.vacia{
+
+    border:1px solid red;
+}
+
+.visible{
+    visibility: visible;
+}
+
+#check{
+
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 @media (max-width: 726px) {
     #contenedorFotos {
@@ -131,4 +159,3 @@ img {
         font-size:14px;
     }
 }
-
