@@ -4,12 +4,12 @@ var jugadores;
 
 function establecerEquipo() {
     equipo = this.value;
-    console.log(equipo);
+   // console.log(equipo);
     ponerImagen();
 }
 
 function ponerImagen(jugadores) {
-    
+    console.log(jugadores);
     let posicion;
 
     for (let i = 0; i < jugadores.length; i++) {
@@ -22,9 +22,11 @@ function ponerImagen(jugadores) {
 
         let jugador = document.createElement("div");
        /* jugador.addEventListener('dragover', allowDrop);
-        jugador.addEventListener('drop', drop);
-        jugador.dataset.img = "yes";*/
+        jugador.addEventListener('drop', drop);*/
+        jugador.dataset.img = "yes";
         
+        if (jugadores[i].estado != "banquillo") {
+       
 
         if (posicion == "porteria") {
             if (jugadores[i].posicion == "Portero") {
@@ -49,6 +51,7 @@ function ponerImagen(jugadores) {
                 defensas.addEventListener('dragover', allowDrop);
                 defensas.addEventListener('drop', drop);
                 jugador.setAttribute("id","defensa"+i)
+                jugador.setAttribute("class","jugador")
                 let imagenDefensa = document.createElement("img");
                 imagenDefensa.addEventListener('dragstart', drag);
                 imagenDefensa.setAttribute('id', jugadores[i]._idjugador);
@@ -84,7 +87,8 @@ function ponerImagen(jugadores) {
                 delanteros.setAttribute("id","delanteros");
                 delanteros.addEventListener('dragover', allowDrop);
                 delanteros.addEventListener('drop', drop);
-                jugador.setAttribute("id","delantero"+i)
+                jugador.setAttribute("id","delantero"+i);
+                
                 let imagenDelantero = document.createElement("img");
                 imagenDelantero.addEventListener('dragstart', drag);
                 imagenDelantero.setAttribute('id', jugadores[i]._idjugador);
@@ -95,38 +99,27 @@ function ponerImagen(jugadores) {
 
             }
         }
-        
-    }
-    
-    
-    for (let i = 0; i < 9; i++) {
-        let pos = document.getElementById('banquillo');
-        let jug = document.createElement('div');
-       /* let defecto = document.getElementsByClassName("jugadoresB");
-        defecto.addEventListener('dragover', allowDrop);
-        defecto.addEventListener('drop', drop);
-        defecto.setAttribute("id", "banquillo"+i);*/
-    
-        jug.addEventListener('dragover', allowDrop);
-        jug.addEventListener('drop', drop);
-        jug.setAttribute("id", "banquillo"+i);
-        if (i != 4) {
-            jug.classList.add('jugadoresB');
+
+        }else{
+            mostrarJugadoresBanquillo(jugadores,posicion);
         }
-        pos.appendChild(jug);
         
     }
-    let posi = document.getElementById('banquillo');
-    let separador = document.createElement("hr");
-    posi.appendChild(separador);
+    
+    
+   
+   
   
 }
 
 function allowDrop(ev) {
 
     //Permitir que reciba algún elemento
-   
-        ev.preventDefault();
+   //console.log(ev.target.parentNode.dataset.img);
+   if (ev.target.parentNode.dataset.img != "yes") {
+    ev.preventDefault();
+   }
+       
     
     
     
@@ -140,21 +133,119 @@ function allowDrop(ev) {
     }
     
     function drop(ev) {
-  console.log(ev.target.firstChild);
+   //console.log(ev.target.dataset.img);
+    //console.log(ev.target.classList.value);
+ 
     //Evitamos el comportamiento normal del navegador, que sería abrir el elemento en una nueva pestaña.
     ev.preventDefault();
     
     //Guardamos el elemento, llamado "text" en una variable.
     var data = ev.dataTransfer.getData("text");
-    
+    console.log(data);
     //Colgamos el elemeto arrastrado y soltado en el nuevo destino.
         
-        ev.target.appendChild(document.getElementById(data));
-    
+            ev.target.appendChild(document.getElementById(data));
+           // ev.target.dataset.img = "no";
+            if (ev.target.classList.value == "jugadoresB") {
+                //SE ENVIAN AL BANQUILLO 
+                ev.target.dataset.img = "no";
+                actualizarBaseDeDatos(data,"banquillo");
+            }else{
+                //SE PONEN DE TITULARES
+                ev.target.classList.value = "yes";
+                actualizarBaseDeDatos(data,"titular");
+            }
+            
+       
     
  
     }
 
+    function actualizarBaseDeDatos(id,estado) {
+        let url = 'modifyDatabase.php';
+    let data = new FormData();
+
+    data.append('id', id);
+    data.append('estado', estado);
+
+    fetch(url, {
+        method: 'POST',
+        body: data
+    })
+        .then(async function (response) {
+            if (response.ok) {
+                return await response.text();
+            } else {
+
+                throw "Error en la llamada al carrito";
+            }
+        
+        })
+        .then(ponerImagen);
+    }
+
+function mostrarJugadoresBanquillo(jugadores,posicion) {
+    
+let banquillo = document.getElementsByClassName("jugadoresB");
+let img;
+let imgJugador;
+
+for (let i = 0; i < jugadores.length; i++) {
+
+    if (posicion == "porteria") {
+        if (jugadores[i].posicion == "Portero" && jugadores[i].estado == "banquillo") {
+            img = jugadores[i].imagen;
+            imgJugador = document.createElement("img");
+           imgJugador.setAttribute("src","img/"+img);
+           imgJugador.setAttribute("id",jugadores[i]._idjugador);
+           imgJugador.addEventListener('dragstart', drag);
+        }
+    }
+
+    if (posicion == "defensa") {
+        if (jugadores[i].posicion == "Defensa"&& jugadores[i].estado == "banquillo") {
+            img = jugadores[i].imagen;
+            imgJugador = document.createElement("img");
+           imgJugador.setAttribute("src","img/"+img);
+           imgJugador.setAttribute("id",jugadores[i]._idjugador);
+           imgJugador.addEventListener('dragstart', drag);
+
+        }
+    }
+
+    if (posicion == "medio") {
+        if (jugadores[i].posicion == "Centrocampista"&& jugadores[i].estado == "banquillo") {
+           img = jugadores[i].imagen;
+         imgJugador = document.createElement("img");
+        imgJugador.setAttribute("src","img/"+img);
+        imgJugador.setAttribute("id",jugadores[i]._idjugador);
+        imgJugador.addEventListener('dragstart', drag);
+        }
+    }
+
+    if (posicion == "delantera") {
+        if (jugadores[i].posicion == "Delantero"&& jugadores[i].estado == "banquillo") {
+            img = jugadores[i].imagen;
+         imgJugador = document.createElement("img");
+        imgJugador.setAttribute("src","img/"+img);
+        imgJugador.setAttribute("id",jugadores[i]._idjugador);
+        imgJugador.addEventListener('dragstart', drag);
+
+        }
+    }
+  
+    
+}
+
+for (let i = 0; i < banquillo.length; i++) {
+         
+    if (banquillo[i].firstChild== null) {
+        banquillo[i].appendChild(imgJugador);
+    }
+
+    
+}
+}
 
 function init() {
     //document.querySelector("select").addEventListener("change",establecerEquipo);
@@ -176,7 +267,19 @@ function init() {
             jugadores = jugadores;
             ponerImagen(jugadores);
         });
-       
+        for (let i = 0; i < 9; i++) {
+            let pos = document.getElementById('banquillo');
+            let jug = document.createElement('div');
+        
+            jug.addEventListener('dragover', allowDrop);
+            jug.addEventListener('drop', drop);
+            jug.setAttribute("id", "banquillo"+i);
+            if (i != 4) {
+                jug.classList.add('jugadoresB');
+            }
+            pos.appendChild(jug);
+            
+        }
 }
 
 
